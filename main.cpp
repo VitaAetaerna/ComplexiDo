@@ -4,7 +4,19 @@ using  namespace std;
 
 // gcc main.cpp -lstdc++
 
+string ShowTasks(){
+    // READ FILE AND PRINT IT CLEAR CMD AND RETURN TO TODO LIST
+}
+
+
 void ToDo(string username, string password){
+    ofstream TaskFile;
+    TaskFile.open("tasks.txt");
+    if (!TaskFile){
+        fstream TaskFileCreate("tasks.txt");
+    }
+    fstream TaskFileCreate("tasks.txt");
+
     int choice = 0;
     cout << "Welcome " << username << endl;
     cout << "                                           1. Show Tasks" << endl;
@@ -12,11 +24,13 @@ void ToDo(string username, string password){
     cout << "                                           3. Delete Tasks" << endl;
     cout << "                                           4. Change Tasks" << endl;
     cout << "                                           5. Exit" << endl;
+    cout << "                                           ";
     // Check Choice of User
     cin >> choice;
     switch (choice){
         case 1:
             cout << "Print all Tasks or none if none is existent" << endl;
+            ShowTasks();
         case 2: 
             cout << "Adding Tasks" << endl;
         case 3:
