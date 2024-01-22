@@ -2,11 +2,31 @@
 #include "fstream"
 using  namespace std;
 
-
 // gcc main.cpp -lstdc++
 
 void ToDo(string username, string password){
-    cout << username << endl << password << endl;
+    int choice = 0;
+    cout << "Welcome " << username << endl;
+    cout << "                                           1. Show Tasks" << endl;
+    cout << "                                           2. Add Task" << endl;
+    cout << "                                           3. Delete Tasks" << endl;
+    cout << "                                           4. Change Tasks" << endl;
+    cout << "                                           5. Exit" << endl;
+    // Check Choice of User
+    cin >> choice;
+    switch (choice){
+        case 1:
+            cout << "Print all Tasks or none if none is existent" << endl;
+        case 2: 
+            cout << "Adding Tasks" << endl;
+        case 3:
+            cout << "Delete Tasks" << endl;
+        case 4:
+            cout << "Change Tasks" << endl;
+        case 5:
+            cout << "Change Tasks" << endl;
+    }
+
 }
 
 int Login(){
@@ -34,20 +54,14 @@ int Register()
 
 
     //Check for non viable Name and password
-    if (sizeof(username) < 2){
-        cout << "Username is not viable, Please enter a name with the length of 2-8 characters" << endl;
-        system("cls");
+    if (sizeof(username) < 2 || sizeof(password) < 5){
+        cout << "Username or Password is not viable, Please enter a name with the length of 2-8 characters and a Password of atleast 5 character" << endl;
         Register();
     }
-
-    if (sizeof(password) < 5){
-        cout << "Password is not viable, Please enter a password with the length of 2-8 characters" << endl;
-        system("cls");
-        Register();
-    }
+    //Open File in Ifstream
     ifstream file;
     file.open("infos.txt");
-
+    //If File exists warn user
     if (file){
         string deleteFile;
         cout << "There is a info File already existing? Do you want to DELETE it and create a new account? yes/no" << endl;
@@ -55,10 +69,10 @@ int Register()
         if (deleteFile == "yes"){
             remove("infos.h");
             system("cls");
-        }else {system("cls"); main();}
+        }else {system("cls"); system("exit");}
     }
 
-
+    //Write To new File
     if (!file){
         ofstream filecreate("infos.txt");
         filecreate << username << endl;
