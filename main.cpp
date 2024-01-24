@@ -82,7 +82,7 @@ int Login()
 
     ifstream fileForLogin("infos.txt");
 
-
+    // Check if info.txt exists and read it
     if (fileForLogin){
 
         int currentline = 0;
@@ -101,6 +101,7 @@ int Login()
 
     }
 
+    // Check for not matching Username and Password
     if (username != savedUsername){
         cout << "Try again, wrong Username!" << endl;
         system("cls");
@@ -111,14 +112,13 @@ int Login()
         system("cls");
         Login();
     }
-    
 
+    ToDo(username, password);
     return 0;
 }
 
 int Register()
 {
-
     // get Password and Username
     cout << "Please enter your Username: " << endl;
     cin >> username;
@@ -151,7 +151,6 @@ int Register()
             system("exit");
         }
     }
-
     // Write To new File
     if (!file)
     {
@@ -159,9 +158,8 @@ int Register()
         filecreate << username << endl;
         filecreate << password << endl;
     }
-
+    // If everything is fine goto ToDo
     ToDo(username, password);
-
     return 0;
 }
 
